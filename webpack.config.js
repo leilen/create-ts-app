@@ -24,12 +24,15 @@ module.exports = (env, options) => {
     },
     module: {
       rules: [
-      {
-        test: /\.ts$/,
-        use: ['ts-loader']
-      }
+        {
+          test: /\.ts$/,
+          use: ['ts-loader']
+        }
       ]
-    }
+    },
+    plugins: [
+      new webpack.BannerPlugin({ banner: "#!/usr/bin/env node", raw: true }),
+    ]
   }
   return config;
 }

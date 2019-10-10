@@ -2,7 +2,7 @@ import * as fs from 'fs'
 import * as readline from 'readline';
 
 const executedPath = process.cwd();
-let projectName = 'app';
+let projectName = null;
 
 function returnFileNameArr(): { name: string, type: number, content?: string }[] {
   return [
@@ -113,9 +113,10 @@ function returnFileNameArr(): { name: string, type: number, content?: string }[]
       name: '.gitignore',
       type: 0,
       content: `node_modules
-      package-lock.json
-      dist/*
-      !/**/.keep`
+package-lock.json
+dist/*
+package-lock.json
+!/**/.keep`
     }
   ];
 }
@@ -166,9 +167,9 @@ async function createTsFiles() {
   try {
     for (let v of returnFileNameArr()) {
       if (v.type == 0) {
-        await createFile(`${executedPath}/${v.name}`, v.content);
+        await createFile(`${executedPath}/${projectName}/${v.name}`, v.content);
       } else {
-        await mkdir(`${executedPath}/${v.name}`);
+        await mkdir(`${executedPath}/${projectName}/${v.name}`);
       }
     }
   } catch (e) {
@@ -183,7 +184,7 @@ function getProjectInfo(): Promise<void> {
     })
     readInterface.question('Enter project name [app] : ', (text) => {
       const trimmed = text.trim();
-      projectName = trimmed ? text.trim() : 'app';
+      projectName = trimmed ? text.trim() : null;
       readInterface.close();
       resolve();
     })
@@ -191,20 +192,35 @@ function getProjectInfo(): Promise<void> {
 }
 
 async function main() {
-  const isNodeProject = await checkIsNodeProject();
-  if (isNodeProject) {
-    console.log('Already TS Project.');
-    return;
-  } else {
-    await getProjectInfo();
-    try {
-      await createTsFiles();
-    } catch (e) {
-      console.log(e);
-      return;
-    }
-  }
 
+  await getProjectInfo();
+  
+  if(!projectName){
+    console.log('Must enter project name!!');
+    return;
+  }
+  const projectNameRegexp = new RegExp('^(?:@[a-z0-9-~][a-z0-9-._~]*/)?[a-z0-9-~][a-z0-9-._~]*$');
+  if(!projectNameRegexp.test(projectName)){
+    console.log('Wrong project name!!');
+    return;
+  }
+  let isProjectExists = await isFileExist(`${executedPath}/${projectName}`)
+  if(isProjectExists){
+    console.log('Already exist project name!!');
+    return;
+  }
+  try{
+    await mkdir(`${executedPath}/${projectName}`);
+  }catch(e){
+    console.log(e);
+    return;
+  }
+  try {
+    await createTsFiles();
+  } catch (e) {
+    console.log(e);
+    return;
+  }
   console.log('Succeed.');
 }
 
