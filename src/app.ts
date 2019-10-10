@@ -13,7 +13,7 @@ function returnFileNameArr(): { name: string, type: number, content?: string }[]
         "name": "${projectName}",
         "version": "1.0.0",
         "description": "",
-        "main": "index.js",
+        "main": "dist/app.js",
         "scripts": {
           "build": "webpack -p --mode=production",
           "pro": "node dist/app.js",
