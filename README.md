@@ -10,7 +10,7 @@ npm start;
 ```
 
 ### Demo
-[![asciicast](https://asciinema.org/a/273501.svg)](https://asciinema.org/a/273501)
+![Demo gif for create-ts-cli](https://likealocal-dev.s3.ap-northeast-2.amazonaws.com/create-react-cli.gif)
 
 ### Get Started Immediately
 You  **don’t**  need to install or configure tools like Webpack or ts-node.  
