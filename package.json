@@ -1,6 +1,6 @@
 {
   "name": "create-ts-cli",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Create basic type script cli app with webpack.",
   "keywords": [
     "typescript",
@@ -26,12 +26,12 @@
   },
   "devDependencies": {
     "@types/node": "^12.7.8",
-    "ts-node": "^8.4.1",
-    "typescript": "^3.6.3",
+    "ts-node": "^8.5.0",
     "webpack-cli": "^3.3.9"
   },
   "dependencies": {
-    "ts-loader": "^6.2.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.2",
     "webpack": "^4.41.0",
     "webpack-node-externals": "^1.7.2"
   }

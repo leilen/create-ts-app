@@ -24,12 +24,12 @@ function returnFileNameArr(): { name: string, type: number, content?: string }[]
         "license": "ISC",
         "devDependencies": {
           "@types/node": "^12.7.8",
-          "ts-node": "^8.4.1",
-          "typescript": "^3.6.3",
+          "ts-node": "^8.5.0",
           "webpack-cli": "^3.3.9"
         },
         "dependencies": {
-          "ts-loader": "^6.2.0",
+          "ts-loader": "^6.2.1",
+          "typescript": "^3.7.2",
           "webpack": "^4.41.0",
           "webpack-node-externals": "^1.7.2"
         }
