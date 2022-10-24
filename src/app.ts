@@ -39,6 +39,11 @@ function returnFileNameArr(): { name: string, type: number, content?: string, re
     {
       name: '.gitignore',
       type: 0,
+      content:`node_modules
+package-lock.json
+dist/*
+package-lock.json
+!/**/.keep`
     }
   ];
 }
@@ -74,10 +79,10 @@ function mkdir(path: string): Promise<void> {
     })
   })
 }
-function createFile(path: string, content?: string): Promise<void> {
+function createFile(path: string, inContent?: string): Promise<void> {
   return new Promise((resolve, reject) => {
-    const readString = fs.readFileSync(`${rootPath}/templates/${path}`,{encoding: 'utf8'})
-    fs.writeFile(`${executedPath}/${projectName}/${path}`, readString ? readString : '', (err) => {
+    const content = inContent ?? fs.readFileSync(`${rootPath}/templates/${path}`,{encoding: 'utf8'});
+    fs.writeFile(`${executedPath}/${projectName}/${path}`, content? content: '', (err) => {
       if (err) {
         reject(err);
       } else {
