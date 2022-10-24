@@ -1,6 +1,6 @@
 {
   "name": "create-ts-cli",
-  "version": "4.8.4",
+  "version": "4.8.4.1",
   "description": "Create basic type script cli app with webpack.",
   "keywords": [
     "typescript",
@@ -9,7 +9,7 @@
   "homepage": "https://github.com/leilen/create-ts-app",
   "main": "dist/app.js",
   "scripts": {
-    "build": "webpack -p --mode=production",
+    "build": "webpack --mode=production",
     "pro": "node dist/app.js",
     "start": "ts-node src/app.ts",
     "clean": "rm -rf ./dist/* && touch ./dist/.keep"
@@ -25,15 +25,15 @@
     "url": "https://github.com/leilen/create-ts-app.git"
   },
   "devDependencies": {
-    "@types/node": "^12.7.8",
-    "ts-node": "^8.5.0",
-    "webpack-cli": "^3.3.9"
+    "@types/node": "^18.11.4",
+    "ts-node": "^10.9.1",
+    "webpack-cli": "^4.10.0"
   },
   "dependencies": {
     "app-root-path": "^3.1.0",
     "ts-loader": "^9.4.1",
     "typescript": "^4.8.4",
-    "webpack": "^4.41.0",
-    "webpack-node-externals": "^1.7.2"
+    "webpack": "^5.74.0",
+    "webpack-node-externals": "^3.0.0"
   }
 }
