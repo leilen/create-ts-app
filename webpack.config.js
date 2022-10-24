@@ -3,6 +3,8 @@
 const webpack = require('webpack');
 const path = require('path');
 const nodeExternals = require('webpack-node-externals')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 
 module.exports = (env, options) => {
   let config = {
@@ -32,6 +34,11 @@ module.exports = (env, options) => {
     },
     plugins: [
       new webpack.BannerPlugin({ banner: "#!/usr/bin/env node", raw: true }),
+      new CopyWebpackPlugin({
+            patterns: [
+                { from: 'templates', to: 'templates' }
+            ]
+        })
     ]
   }
   return config;

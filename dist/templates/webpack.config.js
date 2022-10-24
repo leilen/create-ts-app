@@ -1,0 +1,1 @@
+const webpack=require("webpack"),path=require("path"),nodeExternals=require("webpack-node-externals");module.exports=(e,t)=>({entry:"./src/app.ts",output:{path:path.resolve(__dirname,"dist"),filename:"app.js"},target:"node",node:{__dirname:!1,__filename:!1},externals:[nodeExternals()],resolve:{extensions:[".ts"]},module:{rules:[{test:/\.ts$/,use:["ts-loader"]}]}});
