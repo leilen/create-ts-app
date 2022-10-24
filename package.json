@@ -1,6 +1,6 @@
 {
   "name": "create-ts-cli",
-  "version": "4.8.4.1",
+  "version": "4.8.4-fix",
   "description": "Create basic type script cli app with webpack.",
   "keywords": [
     "typescript",
